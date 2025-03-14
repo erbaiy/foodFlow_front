@@ -5,6 +5,7 @@ import RestaurantIllustration from "../assets/img/restaurants-illustration.svg";
 import SpinnerIcon from "../components/SpinnerIcon";
 import { getRequest } from "../utils/axiosRequests";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../config/axios";
 
 // Helper function to build proper image URLs
 const getImageUrl = (imagePath) => {
@@ -35,11 +36,11 @@ const Restaurants = () => {
     const fetchData = async () => {
         setIsLoading(true);
         try {
-           const uri = "restaurants/";
-            const response = await getRequest(uri);
-            console.log('incoming resto data', response.data.result);
-            if(Array.isArray(response.data.result)){
-                setRestaurants(response.data.result);
+           const uri = "client/restaurants";
+            const response = await axiosInstance.get(uri);
+            console.log('incoming resto data', response.data.data.result);
+            if(Array.isArray(response.data.data.result)){
+                setRestaurants(response.data.data.result);
             } else {
                 console.error("API response data is not an array:", response.data.result)
                 setRestaurants([])
@@ -347,7 +348,7 @@ const RestaurantListItem = ({ restaurant, handleNavigation }) => {
     <div className="bg-white dark:bg-slate-800 rounded-md shadow-md overflow-hidden transition duration-300 flex flex-col h-full">
       <div className="flex flex-col sm:flex-row h-full">
         <img
-          src={getImageUrl(restaurant.logo)}
+          src={getImageUrl(restaurant?.logo)}
           alt={restaurant.name}
           className="w-full sm:w-40 h-48 sm:h-full object-cover"
           onError={(e) => {
@@ -360,7 +361,7 @@ const RestaurantListItem = ({ restaurant, handleNavigation }) => {
             {restaurant.name}
           </h3>
           <p className="text-slate-50 font-medium rounded-full w-fit bg-primary px-2 py-1 dark:text-gray-300 mb-2">
-            {t(restaurant.cuisineType)}
+            {t(restaurant?.cuisineType)}
           </p>
           <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
             <MapPin size={16} className="mr-1 flex-shrink-0" />
