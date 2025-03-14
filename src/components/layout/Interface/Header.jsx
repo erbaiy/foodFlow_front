@@ -38,6 +38,9 @@ const Header = () => {
     items: []
   });
 
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); // Get isAuthenticated from Redux store
+
+
   // Hooks
   const themeConfig = useSelector((state) => state.themeConfig);
   const basketItems = useSelector((state) => state.cart.items);
@@ -46,11 +49,13 @@ const Header = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const basketMenuRef = useRef(null);
-
-  // Effects
-  useEffect(() => {
-    setIsDriver(true); // This should be based on actual authentication
-  }, []);
+  const Auth = AuthService();
+  const getuser =async () => {
+    const user =await Auth.getUser();
+    console.log('user ', user)
+  }
+  
+  
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 0);
@@ -172,8 +177,7 @@ const Header = () => {
   );
 
   const renderAuthButtons = () => {
-    const Auth = AuthService();
-    return Auth.isAuthenticated() ? (
+    return isAuthenticated ? (
       <div className="dropdown shrink-0 flex">
         <Dropdown
           offset={[0, 8]}
@@ -264,23 +268,13 @@ const Header = () => {
           </ul>
         </Dropdown>
       </div>
-    ) : (
+    )  : (
       <div className="flex space-x-4">
-        <Link
-          to="/login"
-          className="py-1.5 px-2 border rounded-md text-slate-900 dark:text-slate-50 hover:text-slate-50 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 transition-colors duration-300"
-        >
-          Sign In
-        </Link>
-        <Link
-          to="/register"
-          className="py-1.5 px-2 text-white rounded-md bg-orange-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 transition-colors duration-300"
-        >
-          Create an account
-        </Link>
+          <Link to="/login" className="py-1.5 px-2 border rounded-md text-slate-900 dark:text-slate-50 hover:text-slate-50 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 transition-colors duration-300">Sign In</Link>
+          <Link to="/register" className="py-1.5 px-2 text-white rounded-md bg-orange-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-orange-600 transition-colors duration-300">Create an account</Link>
       </div>
-    );
-  };
+  );
+};
 
   return (
     <nav className={`sticky top-0 z-50 py-3 px-7 ${
