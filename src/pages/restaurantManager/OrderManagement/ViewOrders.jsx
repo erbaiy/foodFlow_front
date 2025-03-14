@@ -139,6 +139,7 @@ const ViewOrders = () => {
           <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
         </div>
 
+
         <div className="flex items-center">
           <select
             className="px-4 py-2 rounded-lg border bg-white border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary dark:bg-slate-900 dark:border-slate-700 dark:text-white"
