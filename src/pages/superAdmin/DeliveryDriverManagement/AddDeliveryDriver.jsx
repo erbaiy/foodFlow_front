@@ -22,7 +22,7 @@ const AddDeliveryDriver = () => {
     e.preventDefault();
     try {
       // Send the form data to the server
-      await axiosInstance.post('/livreurs', formData);
+      await axiosInstance.post('/super-admin/delivery-driver', formData);
 
       // Success message
       toast.success(t('Delivery driver added successfully'));

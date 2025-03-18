@@ -190,7 +190,7 @@ export const routes = [
       { path: '/verify-email/:token', element: VerifyEmail, protected: false },
       { path: '/verify-otp/', element: VerifyOtp, protected: false },
       { path: '/logout', element: Logout, protected: false },
-      { path: '/forgotPassword', element: ForgotPassword, protected: false },
+      { path: '/forgot-password', element: ForgotPassword, protected: false },
       { path: '/reset-password/:token', element: ResetPassword, protected: false },
       { path: '*', element: NotFound, protected: false },
     ],

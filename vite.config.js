@@ -6,6 +6,8 @@ export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
     include: ['react-image-crop', ]
+    
 
-  }
+  },
+  
 })

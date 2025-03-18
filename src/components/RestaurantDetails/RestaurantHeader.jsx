@@ -14,7 +14,7 @@ const getImageUrl = (imagePath) => {
   return `http://localhost:3005${path}`;
 };
 
-const RestaurantHeader = ({ restaurantData }) => (
+const RestaurantHeader = ({ restaurantData,onEditRestaurant  }) => (
   <div className="relative h-64">
     <img
       src={getImageUrl(restaurantData.banner)}
@@ -32,6 +32,13 @@ const RestaurantHeader = ({ restaurantData }) => (
         <p className="text-sm">{restaurantData.cuisineType}</p>
       </div>
     </div>
+    <button 
+                onClick={onEditRestaurant} 
+                className="absolute top-4 right-4 bg-primary text-white px-4 py-2 rounded"
+            >
+                Edit Restaurant
+            </button>
+
   </div>
 );
 

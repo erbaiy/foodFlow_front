@@ -72,6 +72,12 @@ const getImageUrl = (imagePath) => {
     setCurrentPage(1);
   }, [searchTerm, filterCuisine, restaurants]);
 
+    // Function to handle deletion
+    const handleDelete = (deletedId) => {
+      setRestaurants(prevRestaurants => 
+        prevRestaurants.filter(restaurant => restaurant._id !== deletedId)
+      );
+    };
   const handleSearch = (e) => setSearchTerm(e.target.value);
   const handleFilterChange = (e) => setFilterCuisine(e.target.value);
 
@@ -176,7 +182,8 @@ const getImageUrl = (imagePath) => {
                 key={restaurant._id}
                 restaurant={restaurant}
                 onViewDetails={() => handleViewDetails(restaurant._id)}
-              />
+                onDelete={handleDelete}  // This is the crucial part
+                />
             ))}
           </div>
 

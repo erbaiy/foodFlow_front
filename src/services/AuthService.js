@@ -164,23 +164,28 @@ class Auth {
         }
     }
 
-    async resetPassword(resetToken,password) {
+    async resetPassword(resetToken, password) {
         try {
-            // this.setLoading(true);
-            const response = await axiosInstance.post(
-                `auth/reset-password/${resetToken}`,
-                {password}
-            );
-            const data = await response.data;
-            
-            toast(data.message);
-            return true;
+          // this.setLoading(true);
+          const response = await axiosInstance.post(
+            'auth/reset-password',
+            { newPassword: password },  // Note: changed to 'newPassword' to match DTO
+            {
+              params: {
+                token: resetToken  // Send token as query parameter
+              }
+            }
+          );
+          const data = await response.data;
+          
+          toast(data.message);
+          return true;
         } catch (error) {
-            // this.setLoading(false);
-            toast(error.response.data.error);
-            return false;
+          // this.setLoading(false);
+          toast(error.response?.data?.error || 'An error occurred');
+          return false;
         }
-    }
+      }
 
     getUser() {
         return this.user;
