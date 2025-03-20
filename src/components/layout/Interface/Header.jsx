@@ -37,6 +37,7 @@ const Header = () => {
     address: '',
     items: []
   });
+  const user = useSelector((state) => state.auth.user); // Get user from Redux store
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); // Get isAuthenticated from Redux store
 
@@ -237,34 +238,68 @@ const Header = () => {
                 Profile
               </Link>
             </li>
-            <li className="border-t border-white-light dark:border-white-light/10">
-              <Link to="/logout" className="text-danger !py-3">
-                <svg
-                  className="ltr:mr-2 rtl:ml-2 rotate-90 shrink-0"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    opacity="0.5"
-                    d="M17 9.00195C19.175 9.01406 20.3529 9.11051 21.1213 9.8789C22 10.7576 22 12.1718 22 15.0002V16.0002C22 18.8286 22 20.2429 21.1213 21.1215C20.2426 22.0002 18.8284 22.0002 16 22.0002H8C5.17157 22.0002 3.75736 22.0002 2.87868 21.1215C2 20.2429 2 18.8286 2 16.0002L2 15.0002C2 12.1718 2 10.7576 2.87868 9.87889C3.64706 9.11051 4.82497 9.01406 7 9.00195"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M12 15L12 2M12 2L15 5.5M12 2L9 5.5"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                Sign Out
-              </Link>
-            </li>
+            {(user.role === 'livreur' || user.role === 'super_admin' || user.role === 'gestionnaire') && (
+  <>
+    <li className="border-t border-white-light dark:border-white-light/10">
+      <Link
+        to={
+          user.role === 'livreur'
+            ? "/dashboard/driver/DriverDeliveryOrders"
+            : user.role === 'gestionnaire'
+            ? "/dashboard/restaurant-manager"
+            : "/dashboard/super-admin"
+        }
+        className="text-danger !py-3"
+      >
+        <svg
+          className="ltr:mr-2 rtl:ml-2 shrink-0"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Dashboard Icon */}
+          <path
+            d="M3 13H11V3H3V13ZM3 21H11V15H3V21ZM13 21H21V11H13V21ZM13 3V9H21V3H13Z"
+            fill="currentColor"
+          />
+        </svg>
+        Dashboard
+      </Link>
+    </li>
+    
+  </>
+)}
+
+           {(user) && (<li className="border-t border-white-light dark:border-white-light/10">
+      <Link to="/logout" className="text-danger !py-3">
+        <svg
+          className="ltr:mr-2 rtl:ml-2 rotate-90 shrink-0"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            opacity="0.5"
+            d="M17 9.00195C19.175 9.01406 20.3529 9.11051 21.1213 9.8789C22 10.7576 22 12.1718 22 15.0002V16.0002C22 18.8286 22 20.2429 21.1213 21.1215C20.2426 22.0002 18.8284 22.0002 16 22.0002H8C5.17157 22.0002 3.75736 22.0002 2.87868 21.1215C2 20.2429 2 18.8286 2 16.0002L2 15.0002C2 12.1718 2 10.7576 2.87868 9.87889C3.64706 9.11051 4.82497 9.01406 7 9.00195"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+          <path
+            d="M12 15L12 2M12 2L15 5.5M12 2L9 5.5"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        Sign Out
+      </Link>
+    </li>)}
           </ul>
         </Dropdown>
       </div>
