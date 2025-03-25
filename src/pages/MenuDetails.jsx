@@ -15,7 +15,6 @@ const MenuDetails = () => {
   const [menuItem, setMenuItem] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice,setTotalPrice] =useState(null);
-  const [addOns, setAddOns] = useState([{id: "2001",name: "French Fries",price: 3.0,image: "https://via.placeholder.com/50",selected: false,},{id: "2002",name: "Extra Cheese",price: 2.0,image: "https://via.placeholder.com/50",selected: false,},{  id: "2003",  name: "Coca Cola",  price: 1.5,  image: "https://via.placeholder.com/50",  selected: false,},{  id: "2004",  name: "Choco Lava",  price: 4.0,  image: "https://via.placeholder.com/50",  selected: false,},]);
 
   const dispatch = useDispatch();
  
@@ -101,36 +100,8 @@ const MenuDetails = () => {
                 </button>
               </div>
             </div>
-            <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-50 mb-2">
-              {t("Add On")}
-            </h3>
-            <div className="grid grid-cols-2 gap-4">
-              {addOns.map((addOn) => (
-                <div
-                  key={addOn.id}
-                  className="flex items-center border border-slate-200 dark:border-slate-700 p-2 rounded-md"
-                >
-                  <img
-                    src={addOn.image}
-                    alt={addOn.name}
-                    className="w-12 h-12 rounded-full border-2 border-primary mr-2"
-                  />
-                  <span className="flex-1 text-slate-900 dark:text-slate-50 font-semibold text-base">
-                    {addOn.name}
-                  </span>
-                  <div className="form-control">
-                    <label className="cursor-pointer label">
-                      <input
-                        type="checkbox"
-                        checked={addOn.selected}
-                        onChange={() => handleAddOnChange(addOn.id)}
-                        className="border-primary accent-primary text-slate-50 checked:bg-primary w-4 h-4"
-                      />
-                    </label>
-                  </div>
-                </div>
-              ))}
-            </div>
+           
+            
             <div className="flex space-x-4 mb-4">
               <button onClick={handleAddToCart} className="bg-primary text-white text-base font-semibold px-4 py-2 rounded-md hover:bg-primary/80 transition duration-300">
                 {t("Add To Cart")} 

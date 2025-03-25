@@ -39,7 +39,7 @@ const Footer = () => {
             <img
               className="h-12 w-24 mr-2"
               src={themeConfig.theme === "dark" ? logoDark : logoLight}
-              alt="logo AlloMedia"
+              alt="logo FoodFlow"
             />
           </div>
           <div className="flex space-x-4">
@@ -83,7 +83,7 @@ const Footer = () => {
               <div className="relative">
                 <input
                   type="email"
-                  placeholder="mail@allomedia.com"
+                  placeholder="mail@foodflow.com"
                   className="w-full bg-slate-50 dark:bg-slate-800 border text-sm border-slate-300 dark:border-slate-700 rounded-md px-4 py-2 pr-24 focus:outline-none focus:ring-1 focus:ring-orange-500"
                 />
                 <button
@@ -121,7 +121,7 @@ const Footer = () => {
               href="#"
               className="font-medium text-slate-700 dark:text-slate-200 hover:text-orange-500 transition-colors duration-300"
             >
-              AlloMedia
+              FoodFlow
             </a>{" "}
             - All rights reserved
           </p>

@@ -1,12 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//     isAuthenticated: localStorage.getItem('ticket') ? true : false,
-//     user: JSON.parse(localStorage.getItem('user')) || {},
-// };
 const initialState = {
     isAuthenticated: localStorage.getItem('ticket') ? true : false,
-    user: JSON.parse(localStorage.getItem('user')) || {}, // Provide default empty object
+    user: JSON.parse(localStorage.getItem('user')) || {}, 
 };
 
 const authSlice = createSlice({

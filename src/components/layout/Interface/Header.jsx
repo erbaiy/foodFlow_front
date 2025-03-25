@@ -434,7 +434,7 @@ const Header = () => {
                     <ul className="py-2">
                       {basketItems.map((item) => (
                         <li key={item.id} className="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">
-                          <img src={item.image} alt={item.name} className="w-10 h-10 rounded-full mr-3" />
+                          <img src={`${import.meta.env.VITE_API_HOST}/${item.image}`} alt={item.name} className="w-10 h-10 rounded-full mr-3" />
                           <div className="flex-1 space-y-2">
                             <h4 className="text-base font-semibold text-slate-900 dark:text-slate-50">
                               {item.name}

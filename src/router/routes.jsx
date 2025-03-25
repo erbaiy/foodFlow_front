@@ -83,7 +83,7 @@ export const routes = [
     element: (props) => <DefaultLayout {...props} userRole="gestionnaire" />,
     children: [
       { 
-        path: '/dashboard/restaurant-manager', 
+        path: '/dashboard/restaurant-manager/analytics', 
         element: RestaurantManagerDashboard, 
         protected: true,
         requiredRole: 'gestionnaire' 

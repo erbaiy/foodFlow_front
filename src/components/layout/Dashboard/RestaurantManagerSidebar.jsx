@@ -61,7 +61,7 @@ const RestaurantManagerSidebar = () => {
                 <AnimateHeight duration={300} height={currentMenu === "dashboard" ? "auto" : 0}>
                   <ul className="sub-menu text-gray-500 m-0">
                     <li>
-                      <NavLink to="/analytics">{t("Analytics")}</NavLink>
+                      <NavLink to="/dashboard/restaurant-manager/analytics">{t("Analytics")}</NavLink>
                     </li>
                   </ul>
                 </AnimateHeight>
@@ -202,79 +202,7 @@ const RestaurantManagerSidebar = () => {
                   </ul>
                 </AnimateHeight>
               </li>
-              <h2 className="py-3 px-7 flex items-center uppercase font-extrabold bg-white-light/30 dark:bg-dark dark:bg-opacity-[0.08] -mx-4 mb-1">
-                  <svg
-                    className="w-4 h-5 flex-none hidden"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor" 
-                    strokeWidth="1.5"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M14 7h-4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-                    <path d="M12 3v4"/>
-                    <path d="M8 16h8"/>
-                    <path d="M9 20h6"/>
-                  </svg>
-                  <span className="text-[0.85rem]">
-                    {t("Driver Management")}
-                  </span>
-                                   </h2>
-                     <li className="menu nav-item">
-                       <button
-                         type="button"
-                         className={`${
-                           currentMenu === "drivers" ? "active" : ""
-                         } nav-link group w-full`}
-                         onClick={() => toggleMenu("drivers")}
-                       >
-                         <div className="flex items-center">
-                           <SolarMenuDotsSquareBold className="group-hover:!text-primary shrink-0" />
-                           <span className="ltr:pl-3 rtl:pr-3 text-black dark:text-[#506690] dark:group-hover:text-white-dark">
-                             {t("Manage Drivers")}
-                           </span>
-                         </div>
-                     
-                         <div
-                           className={
-                             currentMenu === "drivers"
-                               ? "rotate-90"
-                               : "rtl:rotate-180"
-                           }
-                         >
-                           <svg
-                             width="16"
-                             height="16"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             xmlns="http://www.w3.org/2000/svg"
-                           >
-                             <path
-                               d="M9 5L15 12L9 19"
-                               stroke="currentColor"
-                               strokeWidth="1.5"
-                               strokeLinecap="round"
-                               strokeLinejoin="round"
-                             />
-                           </svg>
-                         </div>
-                       </button>
-                     
-                       <AnimateHeight
-                         duration={300}
-                         height={currentMenu === "drivers" ? "auto" : 0}
-                       >
-                         <ul className="sub-menu text-gray-500 m-0">
-                           <li>
-                             <NavLink className="text-[0.85rem] font-semibold" to="/dashboard/restaurant-manager/delivery-drivers"> {t("View Drivers")}</NavLink>
-                           </li>
-                           <li>
-                             <NavLink className="text-[0.85rem] font-semibold" to="/dashboard/restaurant-manager/add-driver"> {t("Add Driver")}</NavLink>
-                           </li>
-                         </ul>
-                       </AnimateHeight>
-                     </li>
+              
                   </ul>
                   </div>
                 </div>

@@ -81,6 +81,7 @@ const Cart = () => {
     };
     
     dispatch(insertOrder(orderData));  
+    dispatch(clearCart());
     setIsModalOpen(false);
     navigate("/order-list");
 };
@@ -117,7 +118,7 @@ const Cart = () => {
                     <a href="#" className="shrink-0 md:order-1">
                       <img
                         className="h-20 w-20 rounded-full"
-                        src={`${import.meta.env.VITE_API_HOST}/uploads/restos/${item.image}`}
+                        src={`${import.meta.env.VITE_API_HOST}/${item.image}`}
                         alt={item.name}
                       />
                     </a>

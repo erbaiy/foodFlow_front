@@ -34,6 +34,7 @@ const AddMenuItem = () => {
     });
 
     try {
+      console.log("formData", formData);
       await axiosInstance.post("/super-admin/menu-items/create", formData);
       toast.success(t("Menu item added successfully"));
     } catch (error) {
